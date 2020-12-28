@@ -1,11 +1,22 @@
 import React from 'react';
 
-import {Text, View, StyleSheet, Dimensions} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Dimensions,
+  TouchableHighlight,
+} from 'react-native';
 import styled from 'styled-components/native';
 import Video from 'react-native-video';
 const {height} = Dimensions.get('window');
 
-const Home = () => {
+const Home = ({navigation}) => {
+  const onPress = () => {
+      console.log('Track pressed')
+    navigation.navigate('Track');
+  };
+
   return (
     <View>
       <Video
@@ -29,7 +40,7 @@ const Home = () => {
           Track solar panel to inspect their current status
         </TextDescription>
         <ButtonWrapper>
-          <Button transparent title="Start tracking" />
+          <Button transparent title="Start tracking" onPress={onPress} />
         </ButtonWrapper>
       </Wrapper>
     </View>
