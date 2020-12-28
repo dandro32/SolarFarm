@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 import {
   Text,
@@ -13,7 +13,7 @@ const {height} = Dimensions.get('window');
 
 const Home = ({navigation}) => {
   const onPress = () => {
-      console.log('Track pressed')
+    console.log('Track pressed');
     navigation.navigate('Track');
   };
 
@@ -40,7 +40,10 @@ const Home = ({navigation}) => {
           Track solar panel to inspect their current status
         </TextDescription>
         <ButtonWrapper>
-          <Button transparent title="Start tracking" onPress={onPress} />
+          <>
+            <Button transparent title="Start tracking" onPress={onPress} />
+            <Button transparent title="Load offline data" />
+          </>
         </ButtonWrapper>
       </Wrapper>
     </View>
@@ -110,7 +113,7 @@ StyledTitle = styled.Text`
 
 export const Button = ({onPress, color, ...props}) => {
   return (
-    <StyledButton {...props}>
+    <StyledButton {...props} onPress={onPress}>
       <StyledTitle {...props}>{props.title}</StyledTitle>
     </StyledButton>
   );
