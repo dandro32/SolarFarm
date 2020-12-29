@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {useState} from 'react';
 
 import {
   Text,
@@ -9,12 +9,23 @@ import {
 } from 'react-native';
 import styled from 'styled-components/native';
 import Video from 'react-native-video';
+import ProgressBar from './progressBar';
+
 const {height} = Dimensions.get('window');
 
 const Home = ({navigation}) => {
-  const onPress = () => {
-    console.log('Track pressed');
+  const [showProgressBar, setShowProgressBar] = useState(false);
+
+  const onTrackingPress = () => {
     navigation.navigate('Track');
+  };
+
+  const onLoadOfflinePress = () => {
+    setShowProgressBar(true);
+  };
+
+  const onDataLoaded = () => {
+    setShowProgressBar(false);
   };
 
   return (
@@ -41,10 +52,19 @@ const Home = ({navigation}) => {
         </TextDescription>
         <ButtonWrapper>
           <>
-            <Button transparent title="Start tracking" onPress={onPress} />
-            <Button transparent title="Load offline data" />
+            <Button
+              transparent
+              title="Start tracking"
+              onPress={onTrackingPress}
+            />
+            <Button
+              transparent
+              title="Load offline data"
+              onPress={onLoadOfflinePress}
+            />
           </>
         </ButtonWrapper>
+        {showProgressBar && <ProgressBar callback={onDataLoaded} />}
       </Wrapper>
     </View>
   );
