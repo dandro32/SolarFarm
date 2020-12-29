@@ -10,6 +10,7 @@ import {
 import styled from 'styled-components/native';
 import Video from 'react-native-video';
 import ProgressBar from './progressBar';
+import Toast from 'react-native-toast-message';
 
 const {height} = Dimensions.get('window');
 
@@ -26,6 +27,9 @@ const Home = ({navigation}) => {
 
   const onDataLoaded = () => {
     setShowProgressBar(false);
+    Toast.show({
+      text1: 'Offline data have been cached',
+    });
   };
 
   return (
@@ -64,8 +68,8 @@ const Home = ({navigation}) => {
             />
           </>
         </ButtonWrapper>
-        {showProgressBar && <ProgressBar callback={onDataLoaded} />}
       </Wrapper>
+      {showProgressBar && <ProgressBar callback={onDataLoaded} />}
     </View>
   );
 };

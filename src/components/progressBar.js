@@ -8,8 +8,7 @@ const ProgressBar = ({callback}) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    console.log({progress});
-    if (progress === 100) {
+    if (progress === 110) {
       callback();
     }
 
@@ -37,14 +36,18 @@ const ProgressBar = ({callback}) => {
 };
 
 export const ProgressBarWrapper = styled.View`
+  position: absolute;
   width: 100%;
+  bottom: 0;
+  padding: 20px;
+  background: #3d5875;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 `;
 
 export const Percentage = styled.Text`
-  font-size: 12px;
+  font-size: 20;
   font-weight: 500;
   color: #fff;
 `;
