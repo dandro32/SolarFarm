@@ -36,14 +36,14 @@ const ProgressBar = ({callback}) => {
 };
 
 export const ProgressBarWrapper = styled.View`
-  position: absolute;
   width: 100%;
-  bottom: 0;
   padding: 20px;
   background: #3d5875;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 `;
 
 export const Percentage = styled.Text`

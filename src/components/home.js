@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 
 import {
+  Animated,
   Text,
   View,
   StyleSheet,
@@ -13,9 +14,19 @@ import ProgressBar from './progressBar';
 import Toast from 'react-native-toast-message';
 
 const {height} = Dimensions.get('window');
+const PROGRESS_BAR_HEIGHT = 150;
 
 const Home = ({navigation}) => {
   const [showProgressBar, setShowProgressBar] = useState(false);
+  const toggleHeight = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(toggleHeight, {
+      toValue: showProgressBar ? PROGRESS_BAR_HEIGHT : 0,
+      duration: 1000,
+      useNativeDriver: false,
+    }).start();
+  }, [showProgressBar]);
 
   const onTrackingPress = () => {
     navigation.navigate('Track');
@@ -69,7 +80,9 @@ const Home = ({navigation}) => {
           </>
         </ButtonWrapper>
       </Wrapper>
-      {showProgressBar && <ProgressBar callback={onDataLoaded} />}
+      <Animated.View style={[styles.subView, {height: toggleHeight}]}>
+        {showProgressBar && <ProgressBar callback={onDataLoaded} />}
+      </Animated.View>
     </View>
   );
 };
@@ -83,6 +96,13 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     bottom: 0,
     right: 0,
+  },
+  subView: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: PROGRESS_BAR_HEIGHT,
   },
 });
 
