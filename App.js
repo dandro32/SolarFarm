@@ -14,12 +14,13 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import Home from './src/components/home';
 import Track from './src/components/track';
+import AppContextProvider from './src/state/context';
 
 const Stack = createStackNavigator();
 
 const App: () => React$Node = () => {
   return (
-    <>
+    <AppContextProvider>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
@@ -31,7 +32,7 @@ const App: () => React$Node = () => {
         </Stack.Navigator>
       </NavigationContainer>
       <Toast ref={(ref) => Toast.setRef(ref)} />
-    </>
+    </AppContextProvider>
   );
 };
 

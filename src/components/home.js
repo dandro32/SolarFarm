@@ -23,7 +23,7 @@ const Home = ({navigation}) => {
   useEffect(() => {
     Animated.timing(toggleHeight, {
       toValue: showProgressBar ? PROGRESS_BAR_HEIGHT : 0,
-      duration: 1000,
+      duration: 500,
       useNativeDriver: false,
     }).start();
   }, [showProgressBar]);
