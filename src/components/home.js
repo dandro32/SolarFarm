@@ -12,6 +12,7 @@ import styled from 'styled-components/native';
 import Video from 'react-native-video';
 import ProgressBar from './progressBar';
 import Toast from 'react-native-toast-message';
+import Button from './button';
 
 const {height} = Dimensions.get('window');
 const PROGRESS_BAR_HEIGHT = 150;
@@ -138,29 +139,5 @@ export const Title = styled.Text`
   text-transform: uppercase;
   letter-spacing: 3;
 `;
-const StyledButton = styled.TouchableHighlight`
- width:250px;
- background-color:${(props) => (props.transparent ? 'transparent' : '#f3f8ff')};
- padding:15px;
-border:${(props) => (props.transparent ? '1px solid #f3f8ff ' : 0)}
- justify-content:center;
- margin-bottom:20px;
- border-radius:24px
-`;
-StyledTitle = styled.Text`
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: 3;
-  color: ${(props) => (props.transparent ? '#f3f8ff ' : '#666')};
-`;
-
-export const Button = ({onPress, color, ...props}) => {
-  return (
-    <StyledButton {...props} onPress={onPress}>
-      <StyledTitle {...props}>{props.title}</StyledTitle>
-    </StyledButton>
-  );
-};
 
 export default Home;

@@ -5,8 +5,7 @@ import AnimatedEllipsis from 'react-native-animated-ellipsis';
 import styled from 'styled-components/native';
 import {AppContext} from '../state/context';
 
-const Track = () => {
-
+const Track = ({navigation}) => {
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver` was not specified.']);
     return () => {};
@@ -14,7 +13,7 @@ const Track = () => {
 
   const {items} = useContext(AppContext);
   const goToDetails = (id) => {
-    console.log({id});
+    navigation.navigate('Panel Details', {id});
   };
 
   return (
@@ -31,8 +30,7 @@ const Track = () => {
       <FlatListWrapper
         data={items}
         renderItem={({item}) => (
-          <Pressable onPress={() => goToDetails(item.id
-          )}>
+          <Pressable onPress={() => goToDetails(item.id)}>
             <SolarItem>
               <SolarItemText>{item.name}</SolarItemText>
               <SolarItemText>{item.distance}m</SolarItemText>

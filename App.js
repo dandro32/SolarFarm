@@ -14,6 +14,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import Home from './src/components/home';
 import Track from './src/components/track';
+import Details from './src/components/details';
+
 import AppContextProvider from './src/state/context';
 
 const Stack = createStackNavigator();
@@ -29,6 +31,7 @@ const App: () => React$Node = () => {
             options={{headerShown: false}}
           />
           <Stack.Screen name="Track" component={Track} />
+          <Stack.Screen name="Panel Details" component={Details} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast ref={(ref) => Toast.setRef(ref)} />
