@@ -1,47 +1,27 @@
 import * as RNEP from '@estimote/react-native-proximity';
 import BluetoothStateManager from 'react-native-bluetooth-state-manager';
-import {ESTIMOTE_APP_ID, ESTIMOTE_APP_TOKEN} from "@env"
+import {ESTIMOTE_APP_ID, ESTIMOTE_APP_TOKEN} from '@env';
 
 const ZONE_OPTIONS = [
   {
-    tag: 'kitchen',
+    tag: 'panel1',
     range: 5,
   },
   {
-    tag: 'bathroom',
+    tag: 'panel2',
     range: 5,
   },
   {
-    tag: 'lobby',
+    tag: 'panel3',
     range: 5,
   },
   {
-    tag: 'desk',
+    tag: 'panel4',
     range: 5,
   },
 ];
 
 const setZones = (cb) => {
-  const ZONES = [];
-  ZONE_OPTIONS.forEach(({range, tag}) => {
-    console.log(range, tag)
-    const zone = new RNEP.ProximityZone(range, tag);
-    zone.onEnterAction = (context) => {
-      console.log('zone1 onEnter', context);
-    };
-    zone.onExitAction = (context) => {
-      console.log('zone1 onExit', context);
-    };
-    zone.onChangeAction = (contexts) => {
-      console.log('zone1 onChange', contexts);
-    };
-
-    ZONES.push(zone);
-    
-  });
-
-  console.log(ZONES)
-
   RNEP.locationPermission.request().then(
     (permission) => {
       console.log(2, `location permission: ${permission}`);
@@ -63,6 +43,22 @@ const setZones = (cb) => {
           },
         };
 
+        const ZONES = [];
+        ZONE_OPTIONS.forEach(({range, tag}) => {
+          const zone = new RNEP.ProximityZone(range, tag);
+          zone.onEnterAction = (context) => {
+            console.log('zone1 onEnter', context);
+          };
+          zone.onExitAction = (context) => {
+            console.log('zone1 onExit', context);
+          };
+          zone.onChangeAction = (contexts) => {
+            console.log('zone1 onChange', contexts);
+          };
+
+          ZONES.push(zone);
+        });
+        console.log(ZONES);
         RNEP.proximityObserver.initialize(credentials, config);
         RNEP.proximityObserver.startObservingZones(ZONES);
       }
