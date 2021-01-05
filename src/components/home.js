@@ -15,11 +15,13 @@ import Toast from 'react-native-toast-message';
 import Button from './button';
 
 const {height} = Dimensions.get('window');
-const PROGRESS_BAR_HEIGHT = 150;
+export const PROGRESS_BAR_HEIGHT = 150;
 
 const Home = ({navigation}) => {
   const [showProgressBar, setShowProgressBar] = useState(false);
   const toggleHeight = useRef(new Animated.Value(0)).current;
+
+  console.log({toggleHeight});
 
   useEffect(() => {
     Animated.timing(toggleHeight, {
@@ -100,10 +102,10 @@ const styles = StyleSheet.create({
   },
   subView: {
     position: 'absolute',
-    bottom: 0,
+    bottom: -(PROGRESS_BAR_HEIGHT),
     left: 0,
     right: 0,
-    height: PROGRESS_BAR_HEIGHT,
+    height: 0,
   },
 });
 

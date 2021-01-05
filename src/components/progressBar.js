@@ -14,7 +14,7 @@ const ProgressBar = ({callback}) => {
 
     const timeout = setTimeout(() => {
       setProgress(progress + 10);
-    }, 500);
+    }, 300);
 
     return () => {
       clearTimeout(timeout);
@@ -44,6 +44,7 @@ export const ProgressBarWrapper = styled.View`
   align-items: center;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  height: 150px;
 `;
 
 export const Percentage = styled.Text`
