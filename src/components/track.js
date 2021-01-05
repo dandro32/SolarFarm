@@ -1,17 +1,16 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {FlatList, Text, View, Pressable, LogBox} from 'react-native';
 import AnimatedEllipsis from 'react-native-animated-ellipsis';
-
 import styled from 'styled-components/native';
+import BluetoothStateManager from 'react-native-bluetooth-state-manager';
+
 import {AppContext} from '../state/context';
-import {
-  startProximityObserver,
-  stopProximityObserver
-} from './beacons'
+import {startProximityObserver, stopProximityObserver} from './beacons';
 
 const Track = ({navigation}) => {
   const [isTracking, setIsTracking] = useState(false);
   const {items} = useContext(AppContext);
+  const [detected, setDetected] = useState([]);
 
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver` was not specified.']);
@@ -20,16 +19,22 @@ const Track = ({navigation}) => {
 
   useEffect(() => {
     const initTracking = async () => {
-      await startProximityObserver();
-      setIsTracking(true);
-    }
-     initTracking()
+      await startProximityObserver(setDetected);
+      BluetoothStateManager.onStateChange((bluetoothState) => {
+        if (bluetoothState === 'PoweredOn') {
+          setIsTracking(true);
+        } else {
+          setIsTracking(false);
+          setDetected([]);
+        }
+      }, true);
+    };
+    initTracking();
 
     return () => {
-      stopProximityObserver()
-    }
-  }, [])
-
+      stopProximityObserver();
+    };
+  }, []);
 
   const goToDetails = (id) => {
     navigation.navigate('Panel Details', {id});
@@ -37,19 +42,17 @@ const Track = ({navigation}) => {
 
   return (
     <TrackView>
-    {isTracking && (
-      <IsTrackingWrapper>
-      <IsTrackingText>Tracking</IsTrackingText>
-      <AnimatedEllipsis
-        style={{
-          color: '#00e0ff',
-          fontSize: 40,
-        }}
-      />
-    </IsTrackingWrapper>
-
-
-    )}
+      {isTracking && (
+        <IsTrackingWrapper>
+          <IsTrackingText>Tracking</IsTrackingText>
+          <AnimatedEllipsis
+            style={{
+              color: '#00e0ff',
+              fontSize: 40,
+            }}
+          />
+        </IsTrackingWrapper>
+      )}
       <FlatListWrapper
         data={items}
         renderItem={({item}) => (
@@ -67,6 +70,7 @@ const Track = ({navigation}) => {
 
 export const TrackView = styled.View`
   background: #3d5875;
+  flex: 1;
 `;
 
 export const IsTrackingWrapper = styled.View`
@@ -83,10 +87,11 @@ export const SolarItem = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 10px 20px;
   border-width: 1px 
   border-top-color:#00e0ff;
+  height: 100px;
 `;
 
 export const SolarItemText = styled.Text`

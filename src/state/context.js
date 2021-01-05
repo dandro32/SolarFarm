@@ -6,9 +6,16 @@ const random0to100 = () => {
   return Math.floor(Math.random() * 100) + 1;
 };
 
-const DUMMY_SOLAR_ITEMS = [...Array(30).keys()].map((nr) => ({
-  id: `id_${nr}`,
-  name: `Solar Panel: ${nr}`,
+const ESTIMOTES = [
+  '07eee35579ced631c138597030f8810e',
+  '5af2b87c65c56e1ed93d499a9ecaad03',
+  'f88d6665368fb02e305eeda57a88f13d',
+  '43db0a382491e9f8b236150acac4902e',
+];
+
+const DUMMY_SOLAR_ITEMS = ESTIMOTES.map((id) => ({
+  id: `id_${id}`,
+  name: `Solar Panel: ${id}`,
   distance: (Math.random() * 10).toFixed(1),
   details: {
     time: `${(Math.random() * 10).toFixed(0)} years`,
@@ -26,7 +33,6 @@ const DUMMY_SOLAR_ITEMS = [...Array(30).keys()].map((nr) => ({
             random0to100(),
             random0to100(),
           ],
-          // color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`,
           strokeWidth: 2,
         },
       ],

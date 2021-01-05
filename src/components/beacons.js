@@ -2,31 +2,29 @@ import * as RNEP from '@estimote/react-native-proximity';
 import BluetoothStateManager from 'react-native-bluetooth-state-manager';
 import {ESTIMOTE_APP_ID, ESTIMOTE_APP_TOKEN} from "@env"
 
-
-console.log({ESTIMOTE_APP_ID, ESTIMOTE_APP_TOKEN})
-
 const ZONE_OPTIONS = [
   {
     tag: 'kitchen',
-    range: 3,
+    range: 5,
   },
   {
     tag: 'bathroom',
-    range: 3,
+    range: 5,
   },
   {
     tag: 'lobby',
-    range: 3,
+    range: 5,
   },
   {
     tag: 'desk',
-    range: 3,
+    range: 5,
   },
 ];
 
-const setZones = () => {
+const setZones = (cb) => {
   const ZONES = [];
   ZONE_OPTIONS.forEach(({range, tag}) => {
+    console.log(range, tag)
     const zone = new RNEP.ProximityZone(range, tag);
     zone.onEnterAction = (context) => {
       console.log('zone1 onEnter', context);
@@ -39,11 +37,14 @@ const setZones = () => {
     };
 
     ZONES.push(zone);
+    
   });
+
+  console.log(ZONES)
 
   RNEP.locationPermission.request().then(
     (permission) => {
-      console.log(`location permission: ${permission}`);
+      console.log(2, `location permission: ${permission}`);
 
       if (permission !== RNEP.locationPermission.DENIED) {
         const credentials = new RNEP.CloudCredentials(
@@ -72,7 +73,7 @@ const setZones = () => {
   );
 };
 
-const startProximityObserver = async () => {
+const startProximityObserver = async (cb) => {
   const bluetoothState = await BluetoothStateManager.getState();
 
   if (bluetoothState === 'PoweredOff') {
@@ -81,7 +82,8 @@ const startProximityObserver = async () => {
 
   BluetoothStateManager.onStateChange(async (bluetoothState) => {
     if (bluetoothState === 'PoweredOn') {
-      setZones();
+      console.log(1, 'allow and turn on bluetooth', cb);
+      setZones(cb);
     }
   }, true);
 };

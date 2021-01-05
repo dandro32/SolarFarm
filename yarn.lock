@@ -730,10 +730,9 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
-"@estimote/react-native-proximity@^0.6.0":
+"@estimote/react-native-proximity@https://github.com/Estimote/react-native-proximity.git#1388704":
   version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@estimote/react-native-proximity/-/react-native-proximity-0.6.0.tgz#9f2704cfc975dd59d3105c346e5f80c401279d4e"
-  integrity sha512-q3yrk6Cg/zHX0p7WrCYTbditgFl7DP7tjtzRItTYONeiVO4FRivMnLIX+Ulo3cMLCAgNSaNy4rr9XX1Cu3nkQQ==
+  resolved "https://github.com/Estimote/react-native-proximity.git#13887046f767cf7e304b5dd7884c38ecc15ff8f1"
 
 "@hapi/address@2.x.x":
   version "2.1.4"

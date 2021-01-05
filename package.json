@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@estimote/react-native-proximity": "^0.6.0",
+    "@estimote/react-native-proximity": "https://github.com/Estimote/react-native-proximity.git#1388704",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
