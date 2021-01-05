@@ -49,12 +49,12 @@ export const RowWrapper = styled.View`
 `;
 
 export const Name = styled.Text`
-  font-size: 16;
+  font-size: 16px;
   color: #00e0ff;
 `;
 
 export const Value = styled.Text`
-  font-size: 16;
+  font-size: 16px;
   font-weight: 700;
   color: ${(props) => (props.warning ? 'red' : '#fff')};
 `;
@@ -160,14 +160,14 @@ export const MarkCheckedView = styled.View`
 `;
 
 export const Headline = styled.Text`
-  font-size: 30;
+  font-size: 30px;
   color: #00e0ff;
   margin-bottom: 20px;
   text-align: center;
 `;
 
 export const Voltage = styled.Text`
-  font-size: 18;
+  font-size: 18px;
   color: white;
   text-align: center;
   margin-bottom: 20px;

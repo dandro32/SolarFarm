@@ -1,6 +1,9 @@
 import * as RNEP from '@estimote/react-native-proximity';
 import BluetoothStateManager from 'react-native-bluetooth-state-manager';
-import {ESTIMOTE_APP_ID, ESTIMOTE_APP_TOKEN} from 'react-native-dotenv';
+import {ESTIMOTE_APP_ID, ESTIMOTE_APP_TOKEN} from "@env"
+
+
+console.log({ESTIMOTE_APP_ID, ESTIMOTE_APP_TOKEN})
 
 const ZONE_OPTIONS = [
   {
@@ -24,7 +27,7 @@ const ZONE_OPTIONS = [
 const setZones = () => {
   const ZONES = [];
   ZONE_OPTIONS.forEach(({range, tag}) => {
-    const zone = new RNEP.ProximityZone(tag, range);
+    const zone = new RNEP.ProximityZone(range, tag);
     zone.onEnterAction = (context) => {
       console.log('zone1 onEnter', context);
     };

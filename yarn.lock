@@ -730,6 +730,11 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
+"@estimote/react-native-proximity@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@estimote/react-native-proximity/-/react-native-proximity-0.6.0.tgz#9f2704cfc975dd59d3105c346e5f80c401279d4e"
+  integrity sha512-q3yrk6Cg/zHX0p7WrCYTbditgFl7DP7tjtzRItTYONeiVO4FRivMnLIX+Ulo3cMLCAgNSaNy4rr9XX1Cu3nkQQ==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -6077,6 +6082,11 @@ react-native-animated-ellipsis@^2.0.0:
   dependencies:
     babel-preset-stage-2 "^6.24.1"
     prop-types "^15.5.10"
+
+react-native-bluetooth-state-manager@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-bluetooth-state-manager/-/react-native-bluetooth-state-manager-1.1.2.tgz#ff2871e1d4b77d229f3e3007eb462067b93a6b4f"
+  integrity sha512-TS3n6f6AosGRQD9Azh970vUF79KDCYIv6RBd3AApPLRB8dtUwvMRefpFw0R7tnyXNaQO7EwRuOSOVz63uJ82kw==
 
 react-native-chart-kit@^6.9.0:
   version "6.9.0"

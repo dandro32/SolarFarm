@@ -47,7 +47,7 @@ export const ProgressBarWrapper = styled.View`
 `;
 
 export const Percentage = styled.Text`
-  font-size: 20;
+  font-size: 20px;
   font-weight: 500;
   color: #fff;
 `;

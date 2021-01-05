@@ -18,12 +18,12 @@ const Track = ({navigation}) => {
     return () => {};
   }, []);
 
-  useEffect( () => {
+  useEffect(() => {
     const initTracking = async () => {
       await startProximityObserver();
       setIsTracking(true);
     }
-    await initTracking()
+     initTracking()
 
     return () => {
       stopProximityObserver()
@@ -90,12 +90,12 @@ export const SolarItem = styled.View`
 `;
 
 export const SolarItemText = styled.Text`
-  font-size: 18;
+  font-size: 18px;
   color: #00e0ff;
 `;
 
 export const IsTrackingText = styled.Text`
-  font-size: 30;
+  font-size: 30px;
   color: #00e0ff;
 `;
 

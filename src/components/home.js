@@ -119,7 +119,7 @@ export const Logo = styled.Image`
   height: 100px;
 `;
 export const TextDescription = styled.Text`
-  letter-spacing: 3;
+  letter-spacing: 3px;
   color: #f4f4f4;
   text-align: center;
   text-transform: uppercase;
@@ -133,11 +133,11 @@ export const ButtonWrapper = styled.View`
 export const Title = styled.Text`
   color: #f4f4f4;
   margin: 50% 0px 20px;
-  font-size: 30;
+  font-size: 30px;
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 3;
+  letter-spacing: 3px;
 `;
 
 export default Home;

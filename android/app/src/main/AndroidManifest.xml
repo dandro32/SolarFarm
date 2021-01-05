@@ -2,7 +2,9 @@
   package="com.solarstats">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
