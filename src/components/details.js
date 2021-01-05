@@ -101,15 +101,16 @@ const Details = ({route, navigation}) => {
             <StatusRow name="Producer" value={details.producer} />
             <Voltage>Voltage</Voltage>
             <BarChart
-              labels={['1V', '2V', '5V', '10V']}
+              labels={['1 V', '2 V', '5 V', '10 V']}
               dataY={details.voltage}
               color="#00e0ff"
               height={250}
               containerStyles={{
                 backgroundColor: 'transparent',
-                height: 250 * 0.6,
+                height: 240,
                 width: screenWidth,
                 marginBottom: 20,
+                marginTop: 10,
                 color: 'white',
               }}
             />
