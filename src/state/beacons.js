@@ -66,9 +66,6 @@ export const setZones = (cb) => {
               );
             });
           };
-          zone.onChangeAction = (contexts) => {
-            console.log('zone1 onChange', contexts);
-          };
 
           ZONES.push(zone);
         });

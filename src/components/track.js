@@ -47,9 +47,6 @@ const Track = ({navigation}) => {
   const detectedIds = detected.map((item) => item.id);
   const detectedPanels = items.filter((item) => detectedIds.includes(item.id));
 
-  console.log({detectedPanels, detected, items})
-  
-
   return (
     <TrackView>
       {isTracking && (
@@ -67,10 +64,7 @@ const Track = ({navigation}) => {
         data={detectedPanels}
         renderItem={({item}) => (
           <Pressable onPress={() => goToDetails(item.id)}>
-            <SolarItem>
-              <SolarItemText>{item.name}</SolarItemText>
-              <SolarItemText>{item.distance}m</SolarItemText>
-            </SolarItem>
+            <SolarItemText>{item.name}</SolarItemText>
           </Pressable>
         )}
       />
@@ -93,7 +87,7 @@ export const IsTrackingWrapper = styled.View`
 
 export const FlatListWrapper = styled.FlatList``;
 
-export const SolarItem = styled.View`
+export const SolarItemText = styled.Text`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -102,9 +96,6 @@ export const SolarItem = styled.View`
   border-width: 1px 
   border-top-color:#00e0ff;
   height: 100px;
-`;
-
-export const SolarItemText = styled.Text`
   font-size: 18px;
   color: #00e0ff;
 `;
