@@ -14,7 +14,7 @@ const ESTIMOTES = [
 ];
 
 const DUMMY_SOLAR_ITEMS = ESTIMOTES.map((id) => ({
-  id: `id_${id}`,
+  id,
   name: `Solar Panel: ${id}`,
   distance: (Math.random() * 10).toFixed(1),
   details: {

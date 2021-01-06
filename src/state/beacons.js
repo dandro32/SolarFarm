@@ -47,10 +47,24 @@ export const setZones = (cb) => {
         ZONE_OPTIONS.forEach(({range, tag}) => {
           const zone = new RNEP.ProximityZone(range, tag);
           zone.onEnterAction = (context) => {
-            console.log('zone1 onEnter', context);
+            cb((prevState) => {
+              const alreadyDetectedids = prevState.map((item) => item.id);
+              if (alreadyDetectedids.includes(context.deviceIdentifier)) {
+                return prevState;
+              }
+
+              return [
+                ...prevState,
+                {id: context.deviceIdentifier, name: context.tag},
+              ];
+            });
           };
           zone.onExitAction = (context) => {
-            console.log('zone1 onExit', context);
+            cb((prevState) => {
+              return prevState.filter(
+                (item) => item.id !== context.deviceIdentifier,
+              );
+            });
           };
           zone.onChangeAction = (contexts) => {
             console.log('zone1 onChange', contexts);

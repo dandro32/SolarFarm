@@ -5,7 +5,11 @@ import styled from 'styled-components/native';
 import BluetoothStateManager from 'react-native-bluetooth-state-manager';
 
 import {AppContext} from '../state/context';
-import {startProximityObserver, stopProximityObserver, setZones} from '../state/beacons';
+import {
+  startProximityObserver,
+  stopProximityObserver,
+  setZones,
+} from '../state/beacons';
 
 const Track = ({navigation}) => {
   const [isTracking, setIsTracking] = useState(false);
@@ -19,7 +23,7 @@ const Track = ({navigation}) => {
 
   useEffect(() => {
     const initTracking = async () => {
-      await startProximityObserver(setDetected);
+      await startProximityObserver(setDetected, detected);
       BluetoothStateManager.onStateChange((bluetoothState) => {
         if (bluetoothState === 'PoweredOn') {
           setIsTracking(true);
@@ -40,6 +44,12 @@ const Track = ({navigation}) => {
     navigation.navigate('Panel Details', {id});
   };
 
+  const detectedIds = detected.map((item) => item.id);
+  const detectedPanels = items.filter((item) => detectedIds.includes(item.id));
+
+  console.log({detectedPanels, detected, items})
+  
+
   return (
     <TrackView>
       {isTracking && (
@@ -54,7 +64,7 @@ const Track = ({navigation}) => {
         </IsTrackingWrapper>
       )}
       <FlatListWrapper
-        data={items}
+        data={detectedPanels}
         renderItem={({item}) => (
           <Pressable onPress={() => goToDetails(item.id)}>
             <SolarItem>
