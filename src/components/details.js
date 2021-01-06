@@ -102,7 +102,7 @@ const Details = ({route, navigation}) => {
             <Voltage>Voltage</Voltage>
             <BarChart
               labels={['1 V', '2 V', '5 V', '10 V']}
-              dataY={details.voltage}
+              dataY={details.voltage || []}
               color="#00e0ff"
               height={250}
               containerStyles={{

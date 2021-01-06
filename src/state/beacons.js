@@ -21,7 +21,7 @@ const ZONE_OPTIONS = [
   },
 ];
 
-const setZones = (cb) => {
+export const setZones = (cb) => {
   RNEP.locationPermission.request().then(
     (permission) => {
       console.log(2, `location permission: ${permission}`);
