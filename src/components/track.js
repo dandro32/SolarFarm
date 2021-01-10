@@ -5,11 +5,7 @@ import styled from 'styled-components/native';
 import BluetoothStateManager from 'react-native-bluetooth-state-manager';
 
 import {AppContext} from '../state/context';
-import {
-  startProximityObserver,
-  stopProximityObserver,
-  setZones,
-} from '../state/beacons';
+import {startProximityObserver, stopProximityObserver} from '../state/beacons';
 
 const Track = ({navigation}) => {
   const [isTracking, setIsTracking] = useState(false);

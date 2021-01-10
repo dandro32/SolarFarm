@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Dimensions,
   TouchableHighlight,
+  LogBox,
 } from 'react-native';
 import styled from 'styled-components/native';
 import Video from 'react-native-video';
@@ -14,14 +15,14 @@ import ProgressBar from './progressBar';
 import Toast from 'react-native-toast-message';
 import Button from './button';
 
+LogBox.ignoreAllLogs();  // TODO: for demo purpose only
+
 const {height} = Dimensions.get('window');
 export const PROGRESS_BAR_HEIGHT = 150;
 
 const Home = ({navigation}) => {
   const [showProgressBar, setShowProgressBar] = useState(false);
   const toggleHeight = useRef(new Animated.Value(0)).current;
-
-  console.log({toggleHeight});
 
   useEffect(() => {
     Animated.timing(toggleHeight, {
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
   },
   subView: {
     position: 'absolute',
-    bottom: -(PROGRESS_BAR_HEIGHT),
+    bottom: -PROGRESS_BAR_HEIGHT,
     left: 0,
     right: 0,
     height: 0,

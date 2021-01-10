@@ -24,8 +24,6 @@ const ZONE_OPTIONS = [
 export const setZones = (cb) => {
   RNEP.locationPermission.request().then(
     (permission) => {
-      console.log(2, `location permission: ${permission}`);
-
       if (permission !== RNEP.locationPermission.DENIED) {
         const credentials = new RNEP.CloudCredentials(
           ESTIMOTE_APP_ID,
@@ -69,7 +67,7 @@ export const setZones = (cb) => {
 
           ZONES.push(zone);
         });
-        console.log(ZONES);
+
         RNEP.proximityObserver.initialize(credentials, config);
         RNEP.proximityObserver.startObservingZones(ZONES);
       }
@@ -89,7 +87,6 @@ const startProximityObserver = async (cb) => {
 
   BluetoothStateManager.onStateChange(async (bluetoothState) => {
     if (bluetoothState === 'PoweredOn') {
-      console.log(1, 'allow and turn on bluetooth', cb);
       setZones(cb);
     }
   }, true);
